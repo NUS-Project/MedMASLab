@@ -81,6 +81,11 @@ Avg-V denotes the average accuracy (↑). **Bold** indicates the best performanc
 
 ## ⚙️ Usage
 
+### 🔍 Dataset Download:
+The MedMASLab benchmarking dataset is publicly available on Hugging Face:
+
+**🔗 [Download Dataset from Hugging Face](https://huggingface.co/datasets/qyhhhhh/MedMASLab_dataset/tree/main)**
+
 ### 🎯Running Medical Benchmark
 #### First start your vllm serve 
 ```bash
