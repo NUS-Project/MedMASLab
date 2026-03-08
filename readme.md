@@ -1,0 +1,110 @@
+
+## 🕸️ Overview
+MedMASLab: A Unified Orchestration Framework for Benchmarking Multimodal Medical Multi-Agent Systems
+
+<!-- ## Running the Benchmark -->
+
+
+## 🏆 Leaderboard
+To upload your results, please create a pull request with your result file. The results will be verified before being added to the leaderboard.
+
+Bold indicates the best. Italics indicates the second place.
+
+### ☑️ Multi-choice Questions
+### Proprietary Models
+
+
+
+### Performance Comparison: General-Task vs Medicine-Specific Methods
+This table compares the performance of general-task and medicine-specific methods across five aspects in the medical domain:
+- **Medical Literature Reasoning** (PubMedQA)
+- **Medical Question Answering** (MedQA, MedBullets, MMLU)
+- **Medical Visual Understanding and Reasoning** (VQA-RAD, SLAKE-En, MedVidQA, MedCMR, MedXpertQA-MM)
+- **Diagnosis Decision** (DxBench)
+- **Evaluation of Medical Reasoning Chains** (M3CoTBench)
+
+Avg-V denotes the average accuracy (↑). **Bold** indicates the best performance, and <u>underline</u> indicates the second-best performance.
+
+## Qwen-2.5-7B-Instruct
+
+| Method | PubMedQA | MedQA | MedBullets | MMLU | VQA-RAD | SLAKE-En | MedVidQA | MedCMR | MedXpertQA-MM | DxBench | M3CoTBench | Avg-V |
+|--------|----------|-------|-----------|------|---------|----------|----------|--------|---------------|---------|-----------|-------|
+| Single | 68 | 52.8 | 35.7 | 75.2 | 50.4 | 58.3 | 71.6 | 68.1 | 20.8 | 62.9 | 30.8 | 54.1 |
+| Debate | 68.4 | 52.9 | 37.1 | 76.6 | 54.1 | 64.4 | 76.4 | 64.5 | 21.6 | 64.2 | 34 | 55.9 |
+| MDAgents | 68 | 52.3 | 38.4 | 73.9 | 56.6 | 63.8 | <u>79.1</u> | <u>68.9</u> | 22.6 | 64.7 | **36.8** | <u>56.8</u> |
+| MDTeamGPT | **79.4** | <u>56.1</u> | <u>39</u> | **77.6** | 50.3 | 58.3 | 71.6 | 62.7 | **23.4** | <u>64.9</u> | <u>34.6</u> | 56.2 |
+| Discussion | 56 | 52.3 | 35.2 | 74 | <u>57.3</u> | **65.3** | 75 | 65.9 | 23.3 | 61.5 | 31.8 | 54.3 |
+| Reconcile | 70.8 | 52.9 | 35.2 | 76 | 54.1 | 58.8 | 71.9 | 66.2 | 22.1 | 63.8 | 30.6 | 54.8 |
+| Meta-Prompting | 70.6 | 52.6 | 38 | 73.4 | 51.7 | 58.2 | 78.7 | 61.6 | 21.1 | 64.2 | 29.9 | 54.6 |
+| AutoGen | <u>73</u> | 50.7 | 36.7 | 73.3 | 56.6 | 62.1 | 77.1 | 67.3 | <u>23.3</u> | 61.7 | 28.4 | 55.5 |
+| DyLAN | 62.4 | 53.1 | 35.1 | 75.2 | 47.7 | 58.4 | 69.6 | 64.6 | 21.6 | 63.3 | 33.9 | 53.2 |
+| MedAgents | 71 | **56.7** | **41.9** | 75.3 | 49.5 | 58.9 | 73 | **72.9** | 21.5 | **65.2** | 29.2 | 55.9 |
+| ColaCare | 71.4 | 54.9 | 38.4 | <u>77.4</u> | **59.5** | <u>65.2</u> | **80.5** | 67.9 | 21.6 | 64.5 | 28.8 | **57.3** |
+
+## LLaVA-v1.6-mistral-7b-hf
+
+| Method | PubMedQA | MedQA | MedBullets | MMLU | VQA-RAD | SLAKE-En | MedVidQA | MedCMR | MedXpertQA-MM | DxBench | M3CoTBench | Avg-V |
+|--------|----------|-------|-----------|------|---------|----------|----------|--------|---------------|---------|-----------|-------|
+| Single | 56.6 | 39.2 | 31.2 | 59.9 | 50.8 | 50.7 | 56.1 | 53.3 | 21.8 | 57.6 | 31.9 | 46.3 |
+| Debate | 55 | 43.6 | 33.8 | 59 | <u>52.8</u> | 53.1 | 57 | 49.8 | 20.2 | 58.1 | 33.5 | 46.9 |
+| MDAgents | 60.6 | 40.6 | 31.5 | 58.8 | **54.6** | 53.1 | 64.9 | 52.8 | 21.3 | 54.3 | **34.8** | 47.9 |
+| MDTeamGPT | <u>65.7</u> | 41.8 | **35.8** | <u>62.4</u> | 53.2 | 50.9 | 58.5 | 48 | 21.4 | 57.3 | 33.1 | <u>48</u> |
+| Discussion | **72.3** | 39.8 | 30.2 | 61.9 | 49.3 | 52.8 | 51.4 | 48.3 | 22.1 | 56.5 | 32.3 | 47 |
+| Reconcile | 61.8 | <u>44.5</u> | 32.6 | 58.3 | 51 | 50.4 | 59.9 | 53.7 | 20.5 | 52.6 | 32.5 | 47.1 |
+| Meta-Prompting | 53.4 | 40.8 | 32.2 | 60 | 51.4 | 52.8 | 63.5 | 54.7 | 22.4 | <u>58.2</u> | 30.3 | 47.3 |
+| AutoGen | 58.1 | 38 | 29.9 | 57 | 51.3 | 50 | **73.7** | 47 | **22.7** | 52 | 31 | 46.5 |
+| DyLAN | 44.8 | 37.8 | 30.2 | 58.4 | 50.9 | **56.4** | 60.9 | <u>57.2</u> | 20.4 | 54.2 | 32.5 | 45.8 |
+| MedAgents | 53.6 | 42.5 | <u>33.9</u> | **63.8** | 48.6 | 51 | 51.4 | 56.1 | 22.2 | **58.8** | 32 | 46.7 |
+| ColaCare | 62.4 | **46.1** | 31.9 | 58.5 | 52.4 | 51.8 | <u>73</u> | **59.6** | <u>22.5</u> | 56.2 | <u>34.7</u> | **49.9** |
+
+## Key Findings
+
+- **ColaCare** achieves the highest average accuracy (**57.3%**) on the Qwen-2.5-7B-Instruct model
+- **ColaCare** also performs best (**49.9%**) on the LLaVA-v1.6-mistral-7b-hf model
+- Medicine-specific methods demonstrate superior performance compared to general-task approaches across multiple medical domains
+- Performance varies significantly across different evaluation aspects, with some methods excelling in specific areas (e.g., MDTeamGPT in PubMedQA)
+
+
+### ✒️ Open-ended Questions
+### Proprietary Models
+
+
+
+### Open-source Models
+
+
+
+
+
+## 📝 Citation
+If you use **Med-CMR** in your research, please cite our paper:
+
+```bibtex
+@misc{gong2025medcmrfinegrainedbenchmarkintegrating,
+  title={Med-CMR: A Fine-Grained Benchmark Integrating Visual Evidence and Clinical Logic for Medical Complex Multimodal Reasoning},
+  author={Haozhen Gong and Xiaozhong Ji and Yuansen Liu and Wenbin Wu and Xiaoxiao Yan and Jingjing Liu and Kai Wu and Jiazhen Pan and Bailiang Jian and Jiangning Zhang and Xiaobin Hu and Hongwei Bran Li},
+  year={2025},
+  eprint={2512.00818},
+  archivePrefix={arXiv},
+  primaryClass={cs.AI},
+  url={https://arxiv.org/abs/2512.00818},
+}
+```
+
+## 📮 Contact
+- **Haozhen Gong**: [haozhengong75@gmail.com](haozhengong75@gmail.com)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
