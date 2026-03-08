@@ -112,8 +112,7 @@ python path/to/main.py \
 
 ## 🎨  User Visualization & Interactive Operations Interface
 
-MedMASLab provides a **comprehensive, intuitive web-based graphical user interface (GUI)** designed to democratize access to medical multi-agent system research. By replacing command-line execution with a visual environment, the platform enables researchers and clinicians to configure, customize, and evaluate complex agentic workflows without requiring deep programming expertise.
-
+MedMASLab provides a **comprehensive, intuitive web-based graphical user interface (GUI)** designed to democratize access to medical multi-agent system research. You can learn how to use it by watching the video below.
 
 
 
