@@ -97,7 +97,7 @@ vllm serve path/to/your model \
       --trust-remote-code
 
 ```
-# Run Debate on specific MedQA task
+### Run Debate on specific MedQA task
 ```
 python path/to/main.py \
         --model Debate \
