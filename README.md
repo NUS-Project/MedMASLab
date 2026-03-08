@@ -28,18 +28,7 @@ MedMASLab is the **unified, comprehensive benchmarking platform** specifically d
 
 ---
 
-
-## 🏆 Leaderboard
-To upload your results, please create a pull request with your result file. The results will be verified before being added to the leaderboard.
-
-Bold indicates the best. Italics indicates the second place.
-
-### ☑️ Multi-choice Questions
-### Proprietary Models
-
-
-
-### Performance Comparison: General-Task vs Medicine-Specific Methods
+## 🏆 Performance Comparison: General-Task vs Medicine-Specific Methods
 This table compares the performance of general-task and medicine-specific methods across five aspects in the medical domain:
 - **Medical Literature Reasoning** (PubMedQA)
 - **Medical Question Answering** (MedQA, MedBullets, MMLU)
@@ -81,42 +70,16 @@ Avg-V denotes the average accuracy (↑). **Bold** indicates the best performanc
 | MedAgents | 53.6 | 42.5 | <u>33.9</u> | **63.8** | 48.6 | 51 | 51.4 | 56.1 | 22.2 | **58.8** | 32 | 46.7 |
 | ColaCare | 62.4 | **46.1** | 31.9 | 58.5 | 52.4 | 51.8 | <u>73</u> | **59.6** | <u>22.5</u> | 56.2 | <u>34.7</u> | **49.9** |
 
-## Key Findings
-
-- **ColaCare** achieves the highest average accuracy (**57.3%**) on the Qwen-2.5-7B-Instruct model
-- **ColaCare** also performs best (**49.9%**) on the LLaVA-v1.6-mistral-7b-hf model
-- Medicine-specific methods demonstrate superior performance compared to general-task approaches across multiple medical domains
-- Performance varies significantly across different evaluation aspects, with some methods excelling in specific areas (e.g., MDTeamGPT in PubMedQA)
-
-
-### ✒️ Open-ended Questions
-### Proprietary Models
-
-
-
-### Open-source Models
-
-
 
 
 
 ## 📝 Citation
-If you use **Med-CMR** in your research, please cite our paper:
+If you use **MedMASLab** in your research, please cite our paper:
 
 ```bibtex
-@misc{gong2025medcmrfinegrainedbenchmarkintegrating,
-  title={Med-CMR: A Fine-Grained Benchmark Integrating Visual Evidence and Clinical Logic for Medical Complex Multimodal Reasoning},
-  author={Haozhen Gong and Xiaozhong Ji and Yuansen Liu and Wenbin Wu and Xiaoxiao Yan and Jingjing Liu and Kai Wu and Jiazhen Pan and Bailiang Jian and Jiangning Zhang and Xiaobin Hu and Hongwei Bran Li},
-  year={2025},
-  eprint={2512.00818},
-  archivePrefix={arXiv},
-  primaryClass={cs.AI},
-  url={https://arxiv.org/abs/2512.00818},
-}
+
 ```
 
-## 📮 Contact
-- **Haozhen Gong**: [haozhengong75@gmail.com](haozhengong75@gmail.com)
 
 
 
