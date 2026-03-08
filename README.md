@@ -87,7 +87,7 @@ The MedMASLab benchmarking dataset is publicly available on Hugging Face:
 **🔗 [Download Dataset from Hugging Face](https://huggingface.co/datasets/qyhhhhh/MedMASLab_dataset/tree/main)**
 
 ### 🎯Running Medical Benchmark
-#### First start your vllm serve 
+#### First start your base model vllm serve 
 ```bash
 vllm serve path/to/your model \
       --tensor-parallel-size 8 \
@@ -97,6 +97,21 @@ vllm serve path/to/your model \
       --host 0.0.0.0 \
       --port 8016 \
       --max-model-len 120000 \
+      --max-num-seqs 128 \
+      --limit-mm-per-prompt image=32,video=5 \
+      --trust-remote-code
+
+```
+#### Second start your judge model vllm serve 
+```bash
+vllm serve path/to/your model \
+      --tensor-parallel-size 2 \
+      --gpu-memory-utilization 0.85 \
+      --dtype auto \
+      --served-model-name Qwen2.5-VL-32B-Instruct \
+      --host 0.0.0.0 \
+      --port 8016 \
+      --max-model-len 8096 \
       --max-num-seqs 128 \
       --limit-mm-per-prompt image=32,video=5 \
       --trust-remote-code
