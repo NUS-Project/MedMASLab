@@ -78,6 +78,8 @@ Avg-V denotes the average accuracy (↑). **Bold** indicates the best performanc
 2. PyTorch: 2.6.0+cu124
 3. Transformers: 4.57.6
 4. vLLM: 0.8.0
+5. gradio: 4.44.1
+
 
 ## ⚙️ Usage
 
@@ -126,16 +128,22 @@ python path/to/main.py \
         --num_workers 128 \
         --judge_batch_size 128 \
         --save_interval 400 \
+        --num_samples 1000000 \
         --base_model Qwen2.5-VL-7B-Instruct
 
 ```
 
 ## 🎨  User Visualization & Interactive Operations Interface
 
-MedMASLab provides a **comprehensive, intuitive web-based graphical user interface (GUI)** designed to democratize access to medical multi-agent system research. You can learn how to use it by watching the video below.
+MedMASLab provides a **comprehensive, intuitive web-based graphical user interface (GUI)** designed to democratize access to medical multi-agent system research. You can learn how to use it by watching the video [https://www.youtube.com/watch?v=9Neo5jfgQEg](https://www.youtube.com/watch?v=9Neo5jfgQEg).
+run:
+```
+python web.py
 
-
-
+```
+<p align="center">
+  <img src="./sample.png" width="800">
+</p>
 ## 📝 Citation
 If you use **MedMASLab** in your research, please cite our paper:
 
