@@ -190,7 +190,7 @@ class VLLMBatchInferenceManager:
     """使用 vLLM API 的批量推理管理器"""
     
     def __init__(self, model=None, root_path=None, batch_size=10, timeout=0.5, vllm_url="http://localhost:8000/v1",api_key="EMPTY"):
-        self.model = "gpt-4o-mini"# model
+        self.model = model
         self.thread_name = f"BatchThread-{model}-{id(self)}"
         self.vllm_url = vllm_url
         self.batch_size = batch_size

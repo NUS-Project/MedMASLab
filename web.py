@@ -683,7 +683,7 @@ def run_batch(
         samples = load_test_split(ds_path, dataset_name)
         ds_tag = dataset_name
 
-    n = min(int(num_samples or 10), len(samples))
+    n = min(int(num_samples or 1), len(samples))
     samples = samples[:n]
     if not samples:
         return "⚠️ No samples found.", [], ""
@@ -695,7 +695,7 @@ def run_batch(
         batch_mgr = _make_batch_manager(base_url, base_model, base_key)
 
     results: List[dict] = []
-    correct = 0
+    # correct = 0
     total_time = 0.0
     custom_fn = None
     if method == "Custom":
@@ -750,27 +750,27 @@ def run_batch(
             elapsed = time.time() - t0
             total_time += elapsed
 
-            gt = str(sample.get("answer_idx", "")).strip().lower()
-            is_correct = False
-            if gt:
-                fd = str(ans)
-                m = re.search(r"\(([A-Ea-e])\)", fd)
-                ext = m.group(1).lower() if m else None
-                if ext is None:
-                    m2 = re.match(r"^\s*([A-Ea-e])(?:\s|[^a-zA-Z])", fd)
-                    ext = m2.group(1).lower() if m2 else None
-                if ext and ext == gt:
-                    is_correct = True
-
-            if is_correct:
-                correct += 1
+            # gt = str(sample.get("answer_idx", "")).strip().lower()
+            # is_correct = False
+            # if gt:
+            #     fd = str(ans)
+            #     m = re.search(r"\(([A-Ea-e])\)", fd)
+            #     ext = m.group(1).lower() if m else None
+            #     if ext is None:
+            #         m2 = re.match(r"^\s*([A-Ea-e])(?:\s|[^a-zA-Z])", fd)
+            #         ext = m2.group(1).lower() if m2 else None
+            #     if ext and ext == gt:
+            #         is_correct = True
+            #
+            # if is_correct:
+            #     correct += 1
 
             results.append({
                 "id": sample.get("id", idx),
                 "final_decision": str(ans),
                 "answer": sample.get("answer", ""),
                 "right_option": sample.get("answer_idx", ""),
-                "is_correct": is_correct,
+                # "is_correct": is_correct,
                 "time_cost": round(elapsed, 2),
             })
 
@@ -782,7 +782,7 @@ def run_batch(
                 pass
 
     # ── save & summarize ──
-    acc = correct / len(results) * 100 if results else 0
+    # acc = correct / len(results) * 100 if results else 0
     avg_t = total_time / len(results) if results else 0
 
     out_dir = PROJECT_ROOT / "output_web_demo"
@@ -801,8 +801,8 @@ def run_batch(
         f"  Base Model:   {base_model}\n"
         f"{'─' * 44}\n"
         f"  Samples:      {len(results)}\n"
-        f"  Correct:      {correct}\n"
-        f"  Accuracy:     {acc:.2f}%\n"
+        # f"  Correct:      {correct}\n"
+        # f"  Accuracy:     {acc:.2f}%\n"
         f"  Avg Time:     {avg_t:.2f}s / sample\n"
         f"{'═' * 44}\n"
         f"  Results saved: {out_path.name}\n"
@@ -814,7 +814,7 @@ def run_batch(
             str(r["id"]),
             str(r["final_decision"])[:120],
             str(r.get("right_option", "")),
-            "✅" if r["is_correct"] else "❌",
+            # "✅" if r["is_correct"] else "❌",
             f"{r['time_cost']:.1f}s",
         ])
 

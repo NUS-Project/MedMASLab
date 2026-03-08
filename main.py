@@ -23,7 +23,6 @@ from dataset_utils.medqa import num_repetition
 from llm_evaluate import QwenVL_JudgeModel
 import time
 import concurrent.futures
-from methods.thread import BatchInferenceManager,Video_BatchInferenceManager,LLava_BatchInferenceManager,Video_LLava_BatchInferenceManager
 from methods.vllm_thread import VLLMBatchInferenceManager
 from datetime import datetime, timezone
 
@@ -35,30 +34,29 @@ parser.add_argument('--general_model_path', type=str, default=str(PROJECT_ROOT /
 parser.add_argument('--dataset_path', type=str, default=str(PROJECT_ROOT / 'data'))
 parser.add_argument('--dataset_name', type=str, default='medqa',
                     choices=['medqa', 'pubmedqa', 'medbullets', 'MMLU', 'dxbench', 'VQA_RAD',
-                             'MedCXR', 'MedXpertQA_MM', 'slake', 'MedVidQA','M3CoTBench'])
+                             'MedCMR', 'MedXpertQA_MM', 'slake', 'MedVidQA','M3CoTBench'])
 parser.add_argument('--judge_model', type=str, default='Qwen2.5-VL-32B-Instruct',
                     choices=['gpt-4o-mini', 'Qwen2.5-VL-32B-Instruct'])
 parser.add_argument(
     '--model',
     type=str,
-    default='MDAgents',
+    default='ColaCare',
     choices=['Qwen2.5-VL-72B-Instruct','Qwen2.5-VL-3B-Instruct', 'Qwen2.5-VL-32B-Instruct','Qwen2.5-VL-7B-Instruct','LLaVA-v1.6-mistral-7b-hf','LLaVA-v1.6-mistral-7b-hf', 'MDAgents', 'autogen', 'dylan', 
              'Discussion','Cot', 'SelfConsistency', 'MDTeamGPT', 'Debate', 'Reconcile', 'MedAgents', 'MetaPrompting', 'ColaCare','gpt-4o-mini'],
 )
-parser.add_argument('--base_model', type=str, default='Qwen2.5-VL-7B-Instruct',
+parser.add_argument('--base_model', type=str, default='gpt-4o-mini',
                     choices=['gpt-4o-mini', 'Qwen2.5-VL-7B-Instruct','LLaVA-v1.6-mistral-7b-hf','Qwen2.5-VL-3B-Instruct','Qwen2.5-VL-32B-Instruct','Qwen2.5-VL-72B-Instruct'],
                     help='Base model id for methods that call OpenAI-compatible APIs (e.g., gpt-4o-mini, gemini-2.5-pro)')
 parser.add_argument('--root_path', type=str, default=str(PROJECT_ROOT))
 parser.add_argument("--device", type=str, default="cuda", help='Device / device_map, e.g. "cuda:3" or "auto"')
-parser.add_argument('--num_samples', type=int, default=99999)
+parser.add_argument('--num_samples', type=int, default=100)
 parser.add_argument('--save_interval', type=int, default=100)
 parser.add_argument('--batch_size', type=int, default=2, help='Batch size for parallel inference')
 parser.add_argument('--num_workers', type=int, default=2, help='Number of worker threads')
 parser.add_argument('--judge_batch_size', type=int, default=2, help='Batch size for parallel judge inference')
-# parser.add_argument('--video_batch_size', type=int, default=3, help='Batch size for parallel judge inference')
-# parser.add_argument('--use_vllm', type=bool, default=True, help='whether to use vllm')
-parser.add_argument('--base_vllm_url', type=str, default='https://yinli.one/v1', help='base_vllm url')# http://localhost:8006/v1
-parser.add_argument('--judge_vllm_url', type=str, default='https://yinli.one/v1', help='judge_vllm url') # http://localhost:8007/v1
+parser.add_argument('--base_vllm_url', type=str, default='http://localhost:8016/v1', help='base_vllm url')
+parser.add_argument('--judge_vllm_url', type=str, default='http://localhost:8017/v1', help='judge_vllm url') 
+parser.add_argument('--api_key', type=str, default='EMPTY', help='api_key')
 args = parser.parse_args()
 
 args.root_path = str(Path(args.root_path).expanduser().resolve())
@@ -87,14 +85,16 @@ batch_manager = VLLMBatchInferenceManager(
             root_path=args.root_path,
             batch_size=args.batch_size,
             timeout=0.5,
-            vllm_url=args.base_vllm_url
+            vllm_url=args.base_vllm_url,
+            api_key=args.api_key
         )
 Judge_batch_manager = VLLMBatchInferenceManager(
                 model=args.judge_model,
                 root_path=args.root_path,
                 batch_size=args.judge_batch_size,
                 timeout=0.5,
-                vllm_url=args.judge_vllm_url
+                vllm_url=args.judge_vllm_url,
+                api_key=args.api_key
             )
 batch_manager.start()
 Judge_batch_manager.start()
@@ -139,19 +139,18 @@ def process_sample(sample, args,batch_manager=None,Judge_batch_manager=None,Judg
     print(f"\n[Thread {threading.current_thread().name}] \nProcessing question: {question_id}")
     start_time = time.time()                                       
     if args.model == "MetaPrompting":
-        final_decision, token_stats, current_config = metaprompting_infer(question, args.root_path, args.base_model, img_path)
+        final_decision, token_stats, current_config = metaprompting_infer(question, args.root_path, args.base_model, img_path,args.api_key,args.base_vllm_url)
+    elif args.model == "ColaCare":
+        final_decision, token_stats, current_config = colacare_infer(question, args.root_path, args.base_model, img_path,args.api_key,args.base_vllm_url)
     elif args.model == "MedAgents":
-        final_decision, token_stats, current_config = medagents_infer(question, args.root_path, args.base_model, img_path,
-                                   num_qd=args.medagents_num_qd, num_od=args.medagents_num_od,
-                                   max_round=args.medagents_max_round,
-                                   role_mode=args.medagents_role_mode or "dynamic")
+        final_decision, token_stats, current_config = medagents_infer(question, args.root_path, args.base_model, img_path,batch_manager=batch_manager)
     elif args.model == "MDAgents":
         final_decision, token_stats, current_config = MDAgents_test(question, args.root_path, args.base_model, img_path,
                                                                     batch_manager)
     elif args.model == "autogen":
-        final_decision, token_stats, current_config = autogen_infer_medqa(question, args.root_path, args.base_model, img_paths=img_path)
+        final_decision, token_stats, current_config = autogen_infer_medqa(question, args.root_path, args.base_model, img_paths=img_path,batch_manager=batch_manager)
     elif args.model == "dylan":
-        final_decision, token_stats, current_config = dylan_infer_medqa(question, args.root_path, args.base_model, img_paths=img_path)
+        final_decision, token_stats, current_config = dylan_infer_medqa(question, args.root_path, args.base_model, img_paths=img_path, batch_manager=batch_manager)
     elif args.model == "Discussion":
         final_decision, token_stats, current_config = discussion_infer(question, args.root_path, args.base_model,
                                                                            img_path, batch_manager)
@@ -167,8 +166,6 @@ def process_sample(sample, args,batch_manager=None,Judge_batch_manager=None,Judg
     elif args.model == "Reconcile":
         final_decision, token_stats, current_config = Reconcile_test(question, args.root_path, args.base_model,
                                                                      img_path,batch_manager)
-    elif args.model == "ColaCare":
-        final_decision, token_stats, current_config = colacare_infer(question, args.root_path, args.base_model, img_path)
     else:
         final_decision, token_stats, current_config = test_BaseLine(question, img_path, batch_manager)
     end_time = time.time()
