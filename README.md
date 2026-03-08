@@ -70,7 +70,7 @@ Avg-V denotes the average accuracy (↑). **Bold** indicates the best performanc
 | MedAgents | 53.6 | 42.5 | <u>33.9</u> | **63.8** | 48.6 | 51 | 51.4 | 56.1 | 22.2 | **58.8** | 32 | 46.7 |
 | ColaCare | 62.4 | **46.1** | 31.9 | 58.5 | 52.4 | 51.8 | <u>73</u> | **59.6** | <u>22.5</u> | 56.2 | <u>34.7</u> | **49.9** |
 
-## Getting Started
+## 🔬 Getting Started
 
 ### Prerequisites
 
@@ -79,12 +79,11 @@ Avg-V denotes the average accuracy (↑). **Bold** indicates the best performanc
 3. Transformers: 4.57.6
 4. vLLM: 0.8.0
 
-## Usage
+## ⚙️ Usage
 
-### Running Medical Benchmark
-
+### 🎯Running Medical Benchmark
+#### First start your vllm serve 
 ```bash
-# First start your vllm serve 
 vllm serve path/to/your model \
       --tensor-parallel-size 8 \
       --gpu-memory-utilization 0.85 \
@@ -97,7 +96,9 @@ vllm serve path/to/your model \
       --limit-mm-per-prompt image=32,video=5 \
       --trust-remote-code
 
+```
 # Run Debate on specific MedQA task
+```
 python path/to/main.py \
         --model Debate \
         --dataset_name medqa \
@@ -108,6 +109,13 @@ python path/to/main.py \
         --base_model Qwen2.5-VL-7B-Instruct
 
 ```
+
+## 🎨  User Visualization & Interactive Operations Interface
+
+MedMASLab provides a **comprehensive, intuitive web-based graphical user interface (GUI)** designed to democratize access to medical multi-agent system research. By replacing command-line execution with a visual environment, the platform enables researchers and clinicians to configure, customize, and evaluate complex agentic workflows without requiring deep programming expertise.
+
+
+
 
 ## 📝 Citation
 If you use **MedMASLab** in your research, please cite our paper:
