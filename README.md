@@ -139,7 +139,6 @@ MedMASLab provides a **comprehensive, intuitive web-based graphical user interfa
 run:
 ```
 python web.py
-
 ```
 <p align="center">
   <img src="./sample.png" width="800">
@@ -150,6 +149,7 @@ If you use **MedMASLab** in your research, please cite our paper:
 ```bibtex
 
 ```
+
 
 
 
