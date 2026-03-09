@@ -38,7 +38,7 @@ This table compares the performance of general-task and medicine-specific method
 
 Avg-V denotes the average accuracy (↑). **Bold** indicates the best performance, and <u>underline</u> indicates the second-best performance.
 
-## Qwen-2.5-7B-Instruct
+## Qwen-2.5VL-7B-Instruct
 
 | Method | PubMedQA | MedQA | MedBullets | MMLU | VQA-RAD | SLAKE-En | MedVidQA | MedCMR | MedXpertQA-MM | DxBench | M3CoTBench | Avg-V |
 |--------|----------|-------|-----------|------|---------|----------|----------|--------|---------------|---------|-----------|-------|
@@ -149,6 +149,7 @@ If you use **MedMASLab** in your research, please cite our paper:
 ```bibtex
 
 ```
+
 
 
 
