@@ -147,8 +147,17 @@ python web.py
 If you use **MedMASLab** in your research, please cite our paper:
 
 ```bibtex
-
+@misc{qian2026medmaslabunifiedorchestrationframework,
+      title={MedMASLab: A Unified Orchestration Framework for Benchmarking Multimodal Medical Multi-Agent Systems}, 
+      author={Yunhang Qian and Xiaobin Hu and Jiaquan Yu and Siyang Xin and Xiaokun Chen and Jiangning Zhang and Peng-Tao Jiang and Jiawei Liu and Hongwei Bran Li},
+      year={2026},
+      eprint={2603.09909},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI},
+      url={https://arxiv.org/abs/2603.09909}, 
+}
 ```
+
 
 
 
