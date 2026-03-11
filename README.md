@@ -145,7 +145,7 @@ python web.py
 <p align="center">
   <img src="./sample.png" width="800">
 </p>
-## 📝 Citation
+📝 Citation
 If you use **MedMASLab** in your research, please cite our paper:
 
 ```bibtex
@@ -159,6 +159,7 @@ If you use **MedMASLab** in your research, please cite our paper:
       url={https://arxiv.org/abs/2603.09909}, 
 }
 ```
+
 
 
 
