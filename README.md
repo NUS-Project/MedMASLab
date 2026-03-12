@@ -35,7 +35,7 @@ MedMASLab is the **unified, comprehensive benchmarking platform** specifically d
 ---
 
 ## 🔥 News
-If you want a comprehensive understanding of the landscape of medical agents, visit our curated survey of 300+ papers: [Landmark-of-medical-agent](https://github.com/NUS-Project/Landmark-of-medical-agent)
+If you want a comprehensive understanding of the **landscape of medical agents**, visit our curated survey of **300+ papers**: [Landmark-of-medical-agent](https://github.com/NUS-Project/Landmark-of-medical-agent)
 
 ## 🏆 Performance Comparison: General-Task vs Medicine-Specific MAS Methods
 This table compares the performance of general-task and medicine-specific methods across five aspects in the medical domain:
@@ -166,6 +166,7 @@ If you find our code, data, models, or the paper useful, please cite the paper:
       url={https://arxiv.org/abs/2603.09909}, 
 }
 ```
+
 
 
 
