@@ -146,7 +146,7 @@ python web.py
   <img src="./sample.png" width="800">
 </p>
 📝 Citation
-If you use **MedMASLab** in your research, please cite our paper:
+If you find our code, data, models, or the paper useful, please cite the paper:
 
 ```bibtex
 @misc{qian2026medmaslabunifiedorchestrationframework,
@@ -159,6 +159,7 @@ If you use **MedMASLab** in your research, please cite our paper:
       url={https://arxiv.org/abs/2603.09909}, 
 }
 ```
+
 
 
 
