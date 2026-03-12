@@ -30,7 +30,7 @@ MedMASLab is the **unified, comprehensive benchmarking platform** specifically d
 
 ---
 
-## 🏆 Performance Comparison: General-Task vs Medicine-Specific Methods
+## 🏆 Performance Comparison: General-Task vs Medicine-Specific MAS Methods
 This table compares the performance of general-task and medicine-specific methods across five aspects in the medical domain:
 - **Medical Literature Reasoning** (PubMedQA)
 - **Medical Question Answering** (MedQA, MedBullets, MMLU)
@@ -159,6 +159,7 @@ If you use **MedMASLab** in your research, please cite our paper:
       url={https://arxiv.org/abs/2603.09909}, 
 }
 ```
+
 
 
 
