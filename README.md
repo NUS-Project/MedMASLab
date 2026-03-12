@@ -38,7 +38,7 @@ This table compares the performance of general-task and medicine-specific method
 - **Diagnosis Decision** (DxBench)
 - **Evaluation of Medical Reasoning Chains** (M3CoTBench)
 
-Avg-V denotes the average accuracy (↑). **Bold** indicates the best performance, and <u>underline</u> indicates the second-best performance.
+Avg-V denotes the average accuracy (↑). **Bold** indicates the best performance.
 
 ## Qwen-2.5VL-7B-Instruct
 
@@ -159,6 +159,7 @@ If you find our code, data, models, or the paper useful, please cite the paper:
       url={https://arxiv.org/abs/2603.09909}, 
 }
 ```
+
 
 
 
