@@ -1,7 +1,7 @@
 
 <h1 align="center" style="margin-top: -35px;"><b>MedMASLab: A Unified Orchestration Framework for Benchmarking Multimodal Medical Multi-Agent Systems</b></h1>
 
-[![Paper](https://img.shields.io/badge/Paper-Arxiv-red)(https://arxiv.org/abs/2603.09909)] [[Huggingface Dataset](https://huggingface.co/datasets/qyhhhhh/MedMASLab_dataset)]
+[📄 **Paper**](https://arxiv.org/abs/2603.09909) · [🤗 **Models**](https://huggingface.co/datasets/qyhhhhh/MedMASLab_dataset)
 
 ## 📋 Overview
 MedMASLab is the **unified, comprehensive benchmarking platform** specifically designed for medical vision-language multi-agent systems. It addresses critical challenges in the medical AI field by providing standardized infrastructure, rigorous evaluation metrics, and extensive empirical insights.  
@@ -159,6 +159,7 @@ If you use **MedMASLab** in your research, please cite our paper:
       url={https://arxiv.org/abs/2603.09909}, 
 }
 ```
+
 
 
 
