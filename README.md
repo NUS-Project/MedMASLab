@@ -8,6 +8,10 @@ MedMASLab is the **unified, comprehensive benchmarking platform** specifically d
 
 ---
 
+<p align="center">
+  <img src="./ar.png" alt="Overall Landscape" width="95%" />
+</p>
+
 ## 🎯 Core Contributions
 
 ### 1️⃣ **Unified Orchestration Framework**
@@ -159,6 +163,7 @@ If you find our code, data, models, or the paper useful, please cite the paper:
       url={https://arxiv.org/abs/2603.09909}, 
 }
 ```
+
 
 
 
