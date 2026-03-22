@@ -87,7 +87,7 @@ class RadiologistAgent(MedicalAgent):
 
 
 def test_sample(question, image_path=None):
-    api_key = "sk-pqQMGWFk3QDIwDubCC4AAGVh1JigOAh1d6yowtZdzQZmttiC"
+    api_key = "sk-xxxx"
     base_url = "https://api.vectorengine.ai/v1"
     model_name = "gpt-4o-mini"
 
